@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -14,9 +15,11 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const multer = require('multer');
+
 mongoose.Promise = require('bluebird');
 
-mongoose.connect('mongodb://localhost/artiium');
+// mongoose.connect('mongodb://localhost/artiium');
+mongoose.connect(process.env.MONGODB_URI);
 
 
 const app = express();
